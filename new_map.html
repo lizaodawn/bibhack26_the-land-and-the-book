@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Historical Explorer | Deep Blue Edition</title>
+    <title> The Land and the Book | Interactive Travelogue </title>
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
     <link href="https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.js"></script>
@@ -63,7 +63,7 @@
 
 <div class="ui-panel">
     <button id="style-toggle" class="map-btn"> Manuscript → Satellite → Light </button>
-    <button id="overlay-toggle" class="map-btn">Toggle 1880 Book Map</button>
+    <button id="overlay-toggle" class="map-btn">Toggle 1881 Book Map</button>
     <button id="overlay-toggle-1886" class="map-btn">Toggle 1886 Book Map</button>
 </div>
 
@@ -78,7 +78,7 @@
 
     const map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/mapbox/satellite-streets-v12',
+        style: 'mapbox://styles/dawnnn/cmn3aswde000v01qu4m9j6dqq',
         center: [35.2105, 31.8049], 
         zoom: 8.5,
         pitch: 0,
@@ -190,8 +190,8 @@
     let styleIndex = 0;
     const styles = [
         'mapbox://styles/dawnnn/cmn3aswde000v01qu4m9j6dqq',  // Your Historical Manuscript style
-        'mapbox://styles/mapbox/light-v11',
-        'mapbox://styles/mapbox/satellite-streets-v12'  // Your Historical Manuscript style
+        'mapbox://styles/mapbox/satellite-streets-v12',
+        'mapbox://styles/mapbox/light-v11'  
     ];
 
     document.getElementById('style-toggle').addEventListener('click', () => {
