@@ -18,23 +18,23 @@
   <style>
     /* Midnight blue color scheme matching map (0D47A1 primary) */
     :root {
-      --primary-color: #F4E4BC;
-      --secondary-color: #E74C3C;
+      --primary-color: #b49c60;
+      --secondary-color: #c6ab69;
       --accent-gold: #D4B896;
     }
     .navbar-light .navbar-brand, .nav-link {
       color: var(--primary-color) !important;
     }
     .navbar-light .navbar-brand:focus, .navbar-light .navbar-brand:hover {
-      color: #0D47A1 !important;
+      color: #c6ab69 !important;
     }
     .btn-primary {
       background-color: var(--primary-color);
       border-color: var(--primary-color);
     }
     .btn-primary:hover {
-      background-color: #0a3a7e;
-      border-color: #0a3a7e;
+      background-color: #c6ab69;
+      border-color: #c6ab69;
     }
     .masthead {
       background: linear-gradient(135deg);
@@ -72,6 +72,22 @@
       left: 0;
     }
   </style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const nav = document.getElementById('mainNav');
+  
+  function handleScroll() {
+    if (window.scrollY > 50) {
+      nav.classList.add('scrolled-down');
+    } else {
+      nav.classList.remove('scrolled-down');
+    }
+  }
+  
+  window.addEventListener('scroll', handleScroll);
+  handleScroll(); // Initial check
+});
+</script>
 </head>
 <body id="page-top">
   <!-- Navigation -->
@@ -98,61 +114,140 @@
       <div class="d-flex justify-content-center">
         <div class="text-center">
           <h1 class="mx-auto my-0 text-uppercase text-white">W@nder Travelogues</h1>
-          <h2 class="text-white-50 mx-auto mt-2 mb-5">Evoke the multi-sensory experience of travel on a map</h2>
+          <h2 class="text-white-50 mx-auto mt-2 mb-5">Travelogues relived through interactive maps, texts, and images</h2>
           <a class="btn btn-primary btn-xl" href="#map-section">Launch Interactive Map</a>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- Project Section (replaces About) -->
+  <!-- Project Section  -->
   <section class="page-section-custom bg-light" id="project">
     <div class="container px-4 px-lg-5">
       <h2 class="text-center mt-0 text-primary-custom">Project Overview</h2>
       <hr class="divider" />
       <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-lg-10">
-          <p class="lead text-dark text-center mb-5">To evoke the multi-sensory experience of travel, we aim to present travelogues textually, visually and spatially. For our project, we chose to do a deep dive into “The Land and the Book”, a nineteenth century travelogue of Palestine and a Biblical narrative by the American Protestant missionary William McClure Thomson (1806-1894). The work combines travel description, ethnographic observation, and biblical commentary based on Thomson’s travels in Ottoman-era Syria and Palestine. To explore this travelogue computationally, we created an interactive map interface with clickable locations points, displaying image and text pairings from the travelogue.</p>
+          <p class="lead text-dark text-center mb-5">To evoke the multi-sensory experience of travel, this project presents travelogues textually, visually, and spatially.
+We explore <a href="https://www.wikidata.org/wiki/Q137684466">The Land and the Book</a> by <a href="https://www.wikidata.org/wiki/Q16060082">William McClure Thomson</a> (1806-1884), recounting his three-part journey through the Holy Land (Israel, Palestine, Lebanon, Syria and Jordan).
+The result is an interactive map of the region, offering text-image pairs and route visualisation. Present-day images were added to peek into the vast changes the area went through in the past 150 years.
+</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Data & Team (replaces Projects/Signup) -->
+  <!-- Data & Team  -->
   <section class="page-section-custom" id="data">
     <div class="container px-4 px-lg-5">
       <div class="row gx-4 gx-lg-5">
         <div class="col-lg-6">
           <h3 class="text-primary-custom mb-4">Data Sources</h3>
           <ul class="project-list lead text-muted">
-            <li>“The Land and the Book”, a nineteenth century travelogue of Palestine and a Biblical narrative by the American Protestant missionary William McClure Thomson (1806-1894)</li>
+            <li>Thomson, W. M. (1881) The land and the Book; or Biblical illustrations drawn from the manners and customs, the scenes and scenery of the Holy Land. Southern Palestine and Jerusalem. London: T. Nelson and sons. <a href="https://repository.teneo.libis.be/delivery/DeliveryManagerServlet?dps_pid=IE63532297" target="_blank">[Read Online]</a></li>
+            <li>Thomson, W. M. (1883) The land and the Book; or, biblical illustrations drawn from the manners and customs, the scenes and scenery, of the Holy Land. Central Palestine and Phoenicia. London: T. Nelson and sons. <a href="https://repository.teneo.libis.be/delivery/DeliveryManagerServlet?dps_pid=IE63529066" target="_blank">[Read Online]</a></li>
+            <li>Thomson, W. M. (1886) The land and the Book; or, biblical illustrations drawn from the manners and customs, the scenes and scenery, of the Holy Land. Lebanon, Damascus and beyond Jordan. London: T. Nelson and sons. <a href="https://repository.teneo.libis.be/delivery/DeliveryManagerServlet?dps_pid=IE63547717" target="_blank">[Read Online]</a></li>
+            <li>Curated Dataset and Codes<a href="https://github.com/lizaodawn/bibhack26_the-land-and-the-book" target="_blank">[GitHub Repository]</a></li>
           </ul>
         </div>
         <div class="col-lg-6" id="team">
-          <h3 class="text-primary-custom mb-4">Project Team</h3>
-          <div class="text-muted lead">
-            <p><i class="fas fa-user-circle fa-2x text-primary-custom mb-3"></i><br><strong>name1</strong><br>
-            Faculty of Arts<br>
-            <small class="text-primary-custom">KU Leuven</small></p>
-            <p><i class="fas fa-user-circle fa-2x text-primary-custom mb-3"></i><br><strong>name2</strong><br>
-            Faculty of Arts<br>
-            <small class="text-primary-custom">KU Leuven</small></p>
-          </div>
+  <h3 class="text-primary-custom mb-4">W@nderers</h3>
+
+  <div class="row text-muted lead">
+    
+    <!-- Person 1 -->
+    <div class="col-md-6 mt=5 mb-4">
+      <strong>Emily Teo</strong>
+      <a href="https://www.linkedin.com/in/name1" target="_blank">
+        <i class="fab fa-linkedin ms-1 text-primary-custom"></i>
+      </a><br>
+      <small class="text-primary-custom">Faculty of Arts</small>
+    </div>
+
+    <!-- Person 2 -->
+    <div class="col-md-6 mb-4">
+      <strong>Victor Close</strong>
+      <a href="https://www.linkedin.com/in/name1" target="_blank">
+        <i class="fab fa-linkedin ms-1 text-primary-custom"></i>
+      </a><br>
+      <small class="text-primary-custom">Faculty of Engineering Science</small>
+    </div>
+
+    <!-- Person 3 -->
+    <div class="col-md-6 mb-4">
+      <strong>Tim Emmers</strong>
+      <a href="https://www.linkedin.com/in/name1" target="_blank">
+        <i class="fab fa-linkedin ms-1 text-primary-custom"></i>
+      </a><br>
+      <small class="text-primary-custom">Faculty of Arts</small>
+    </div>
+
+    <!-- Person 4 -->
+    <div class="col-md-6 mb-4">
+      <strong>Yanhan Liu</strong>
+      <a href="https://www.linkedin.com/in/yanhan-liu-2a4b3b370/" target="_blank">
+        <i class="fab fa-linkedin ms-1 text-primary-custom"></i>
+      </a><br>
+      <small class="text-primary-custom">Faculty of Engineering Science</small>
+    </div>
+
+    <!-- Person 5 -->
+    <div class="col-md-6 mb-4">
+      <strong>Tuur Schockaert</strong>
+      <a href="https://www.linkedin.com/in/name1" target="_blank">
+        <i class="fab fa-linkedin ms-1 text-primary-custom"></i>
+      </a><br>
+      <small class="text-primary-custom">Faculty of Arts</small>
+    </div>
+
+    <!-- Person 6 -->
+    <div class="col-md-6 mb-4">
+  <strong>Dawn Zhuang</strong>
+  <a href="https://www.linkedin.com/in/dawnzh" target="_blank">
+    <i class="fab fa-linkedin ms-1 text-primary-custom"></i>
+  </a> 
+  <a href="https://github.com/lizaodawn" target="_blank">
+    <i class="fab fa-github ms-1 text-primary-custom"></i>
+  </a><br>
+  <small class="text-primary-custom">Faculty of Arts</small>
+</div>
+
+  </div>
+</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Map Section (replaces Contact) -->
+  <!-- Map Section -->
   <section class="page-section-custom bg-light" id="map-section">
     <div class="container px-4 px-lg-5">
       <h2 class="text-center mt-0 mb-5 text-primary-custom">Interactive Map</h2>
       <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-lg-10">
           <div class="text-center mb-5">
-            <p class="lead text-muted">Toggle 1881/1883/1886 overlays, switch styles (manuscript/satellite), click routes for images & captions.</p>
+            <p class="lead text-muted">Toggle 1881/1883/1886 overlays, switch styles (manuscript/satellite/light), click routes or nodes for illustrations, photos & stories.</p>
           </div>
-          <iframe src="new_map.html" height="750" frameborder="0" allowfullscreen loading="lazy"></iframe>
+          <!-- Map Wrapper with Overlay Button -->
+        <div style="position: relative;">
+
+          <!-- Fullscreen Button -->
+          <a href="new_map.html" target="_blank"
+             class="btn btn-sm btn-light"
+             style="position: absolute; bottom: 40px; right: 10px; z-index: 10;">
+            ⛶ Fullscreen
+          </a>
+
+          <!-- Map Iframe -->
+          <iframe 
+            src="new_map.html"
+            width="100%"
+            height="750"
+            frameborder="0"
+            allowfullscreen
+            loading="lazy"
+            style="border-radius: 8px;">
+          </iframe>
         </div>
       </div>
     </div>
@@ -160,7 +255,7 @@
 
   <!-- Footer -->
   <footer class="footer bg-primary-custom small text-center text-white-50">
-    <div class="container px-4 px-lg-5">&copy; W@nder Travelogues 2026 | KU Leuven Bibliotech Hackathon 2026</div>
+    <div class="container px-4 px-lg-5">&copy; W@nder Travelogues | KU Leuven Bibliotech Hackathon 2026</div>
   </footer>
 
   <!-- Bootstrap core JS -->
