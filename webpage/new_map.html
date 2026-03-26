@@ -16,7 +16,7 @@
         .ui-panel {
             position: absolute;
             top: 1%;
-            right: 6%;
+            right: 50px;
             z-index: 10;
             display: flex;
             flex-direction: column;
@@ -66,6 +66,7 @@
     <button id="overlay-toggle" class="map-btn">Toggle 1881 Book Map</button>
     <button id="overlay-toggle-1883" class="map-btn">Toggle 1883 Book Map</button>
     <button id="overlay-toggle-1886" class="map-btn">Toggle 1886 Book Map</button>
+    <button id="book-maps-toggle" class="map-btn">Toggle All Book Maps</button>
 </div>
 
 <div id="map"></div>
@@ -75,7 +76,9 @@
 
     let currentStyle = 'satellite';
     let overlayVisible = false;
-    let overlay1886Visible = false;
+    let overlay1883Visible = false;
+    let overlay1886Visible = false;    
+    let allBookMapsVisible = false;
 
     const map = new mapboxgl.Map({
         container: 'map',
@@ -117,10 +120,10 @@
                 'type': 'image',
                 'url': './1883_bookmap.jpeg', 
                 'coordinates': [
-                    [35.48505, 33.55691], // Top Left [lng, lat]
-                    [36.86476, 33.56105], // Top Right
-                    [36.85357, 31.39614], // Bottom Right
-                    [35.50537, 31.40857]  // Bottom Left
+                    [35.31505, 33.57691], // Top Left [lng, lat]
+                    [36.69476, 33.58105], // Top Right
+                    [36.68357, 31.38614], // Bottom Right
+                    [35.33537, 31.39857]  // Bottom Left
                 ]
             });
         }
@@ -130,10 +133,10 @@
                 'type': 'image',
                 'url': './1886_bookmap.jpg', // Change to your actual file name
                 'coordinates': [
-                    [35.31549, 34.81390], // Update these to your 1886 QGIS bounding box
-                    [36.68027, 34.81142], 
-                    [36.73500, 33.22608], 
-                    [35.33332, 33.21115]  
+                    [35.13549, 34.81390], // Update these to your 1886 QGIS bounding box
+                    [36.50027, 34.81142], 
+                    [36.55500, 33.22608], 
+                    [35.15332, 33.21115]  
                 ]
             });
         }
@@ -152,7 +155,7 @@
             'id': 'overlay-layer-1883',
             'type': 'raster',
             'source': 'historical-image-1883',
-            'layout': { 'visibility': overlayVisible ? 'visible' : 'none' },
+            'layout': { 'visibility': overlay1883Visible ? 'visible' : 'none' },
             'paint': { 'raster-opacity': 0.8 }
         });
 
@@ -233,8 +236,8 @@
     });
 
     document.getElementById('overlay-toggle-1883').addEventListener('click', () => {
-        overlay1886Visible = !overlay1886Visible;
-        const visibility = overlay1886Visible ? 'visible' : 'none';
+        overlay1883Visible = !overlay1883Visible;
+        const visibility = overlay1883Visible ? 'visible' : 'none';
         map.setLayoutProperty('overlay-layer-1883', 'visibility', visibility);
         document.getElementById('overlay-toggle-1883').classList.toggle('active-overlay');
     });
@@ -245,6 +248,23 @@
         map.setLayoutProperty('overlay-layer-1886', 'visibility', visibility);
         document.getElementById('overlay-toggle-1886').classList.toggle('active-overlay');
     });
+
+    document.getElementById('book-maps-toggle').addEventListener('click', () => {
+    allBookMapsVisible = !allBookMapsVisible;
+    const visibility = allBookMapsVisible ? 'visible' : 'none';
+    
+    // Toggle all three overlay layers
+    map.setLayoutProperty('overlay-layer', 'visibility', visibility);
+    map.setLayoutProperty('overlay-layer-1883', 'visibility', visibility);
+    map.setLayoutProperty('overlay-layer-1886', 'visibility', visibility);
+    
+    // Update all buttons visual state
+    document.querySelectorAll('.map-btn[id*="overlay-toggle"]').forEach(btn => {
+        btn.classList.toggle('active-overlay', allBookMapsVisible);
+    });
+    
+    document.getElementById('book-maps-toggle').classList.toggle('active-overlay');
+});
 
     // POPUP LOGIC (Assuming your media is a stringified JSON array in the GeoJSON)
     function showFeaturePopup(e) {
